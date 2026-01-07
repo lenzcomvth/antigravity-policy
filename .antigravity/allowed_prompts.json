@@ -1,1 +1,19 @@
-{ "agent_name": "Antigravity-Strict", "allowed_prompt_patterns": ["^/describe","^/summarize","^/format","^/explain","^/readonly-check"], "deny_file_ops": true, "deny_shell_exec": true, "require_signed_prompts": false, "allowed_writable_paths": ["tmp/","scratch/"], "enforce_git_policy": true, "audit_enabled": true }
+{
+  "audit_enabled": true,
+  "allowed_prompt_patterns": [
+    "^/describe",
+    "^/summarize",
+    "^/format",
+    "^/explain",
+    "^/readonly-check"
+  ],
+  "agent_name": "Antigravity-Strict",
+  "deny_shell_exec": true,
+  "allowed_writable_paths": [
+    "tmp/",
+    "scratch/"
+  ],
+  "enforce_git_policy": true,
+  "deny_file_ops": true,
+  "require_signed_prompts": false
+}
