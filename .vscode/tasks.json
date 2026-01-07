@@ -22,5 +22,13 @@
       "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\do_everything_local.ps1"],
       "presentation": { "echo": true, "reveal": "always" }
     }
+    ,
+    {
+      "label": "Send selection to wrapper (PowerShell)",
+      "type": "shell",
+      "command": "pwsh",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\scripts\\send_selection_to_wrapper.ps1"],
+      "presentation": { "echo": true, "reveal": "always" }
+    }
   ]
 }

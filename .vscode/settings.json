@@ -1,0 +1,14 @@
+{
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.antigravity/.*",
+        "cmd": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"${workspaceFolder}/scripts/apply_prompt_rules.ps1\""
+      },
+      {
+        "match": "scripts/apply_prompt_rules.*",
+        "cmd": "pwsh -NoProfile -ExecutionPolicy Bypass -File \"${workspaceFolder}/scripts/apply_prompt_rules.ps1\""
+      }
+    ]
+  }
+}
