@@ -1,0 +1,61 @@
+﻿name: Header Check — enforce Studio Header
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  header-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch base ref
+        run: |
+          BASE_REF="${{ github.event.pull_request.base.ref }}"
+          git fetch origin "$BASE_REF" --depth=1 || true
+
+      - name: Find changed source files
+        id: changed
+        run: |
+          BASE="${{ github.event.pull_request.base.ref }}"
+          # list files changed in the PR (base...head)
+          git diff --name-only origin/"$BASE"...${{ github.sha }} > /tmp/changed_files.txt || true
+          echo "::group::Changed files"
+          cat /tmp/changed_files.txt || true
+          echo "::endgroup::"
+          changed_count=$(wc -l < /tmp/changed_files.txt || echo 0)
+          echo "count=$changed_count" >> $GITHUB_OUTPUT
+
+      - name: Check Studio Header present in changed source files
+        run: |
+          MISSING=""
+          while read -r f; do
+            # skip directories and non-source files
+            if [ -z "$f" ]; then continue; fi
+            if [ ! -f "$f" ]; then continue; fi
+            # only check common source extensions
+            case "$f" in
+              *.js|*.jsx|*.ts|*.tsx|*.py|*.java|*.go)
+                # read first 16 lines to detect header
+                header=$(head -n 16 "$f" | tr -d '\r' )
+                echo "Checking $f"
+                echo "$header" | grep -q "DẠ HÀNH STUDIO - PROJECT REBUILDER" || {
+                  MISSING="$MISSING\n$f"
+                }
+                ;;
+              *)
+                # skip other files
+                ;;
+            esac
+          done < /tmp/changed_files.txt
+
+          if [ -n "$MISSING" ]; then
+            echo "::error::The following files are missing the required Studio Header (top of file):"
+            echo -e "$MISSING" | sed -n '1,200p'
+            exit 1
+          else
+            echo "All changed source files contain the Studio Header (or none required)."
+          fi
