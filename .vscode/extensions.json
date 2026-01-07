@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "github.vscode-pull-request-github",
+    "ms-vscode.powershell",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens"
+  ]
+}

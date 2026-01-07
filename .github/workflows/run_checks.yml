@@ -1,0 +1,24 @@
+name: Run checks
+on:
+  push:
+    branches: [ main, '**' ]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up bash
+        run: |
+          chmod +x ./scripts/run_checks.sh || true
+
+      - name: Run project checks
+        run: |
+          echo "Running project checks via ./scripts/run_checks.sh"
+          ./scripts/run_checks.sh

@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Apply prompt rules (PowerShell)",
+      "type": "shell",
+      "command": "pwsh",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\scripts\\apply_prompt_rules.ps1"],
+      "presentation": { "echo": true, "reveal": "always" }
+    },
+    {
+      "label": "Run checks (bash)",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-lc", "./scripts/run_checks.sh"],
+      "presentation": { "echo": true, "reveal": "always" }
+    },
+    {
+      "label": "Do everything local (PowerShell)",
+      "type": "shell",
+      "command": "pwsh",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\do_everything_local.ps1"],
+      "presentation": { "echo": true, "reveal": "always" }
+    }
+  ]
+}
