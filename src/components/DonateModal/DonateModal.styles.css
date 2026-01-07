@@ -1,0 +1,2 @@
+﻿.dh-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:1000; }
+.dh-modal { width:420px; background: linear-gradient(180deg,#1b0b2e,#0d0a13); color:#fff; padding:18px; border-radius:12px; }

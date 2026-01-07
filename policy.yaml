@@ -1,0 +1,14 @@
+﻿# policy.yaml — định nghĩa policy cho wrapper/IDE
+allowed_prompts:
+  - '^/describe'
+  - '^/summarize'
+  - '^/format'
+  - '^/explain'
+deny_file_ops: true
+deny_shell_exec: true
+allowed_writable_paths:
+  - "tmp/"
+  - "scratch/"
+enforce_git_policy: true
+require_signed_prompts: false
+log_level: "WARN"

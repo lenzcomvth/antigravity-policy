@@ -1,0 +1,21 @@
+﻿{
+  "agent_name": "Antigravity-Strict",
+  "mode": "prompt-restricted",
+  "allowed_prompt_patterns": [
+    "^/describe",
+    "^/summarize",
+    "^/format",
+    "^/explain",
+    "^/readonly-check"
+  ],
+  "deny_file_operations": true,
+  "deny_shell_exec": true,
+  "allowed_writable_paths": [
+    "tmp/",
+    "scratch/"
+  ],
+  "enforce_git_policy": true,
+  "audit_enabled": true,
+  "audit_log_path": "/var/log/antigravity/agent-audit.log",
+  "max_response_time_seconds": 30
+}
