@@ -1,4 +1,43 @@
-﻿# Pull Request: Add Antigravity policy bundle
+﻿Summary
+-------
+Add prompt rules and automation artifacts to support Antigravity agent prompt restrictions and local automation.
+
+Files changed
+-------------
+ - .antigravity/allowed_prompts.json
+ - .antigravity/prompt_rules.md
+ - scripts/apply_prompt_rules.sh
+ - scripts/apply_prompt_rules.ps1
+ - do_everything_local.sh
+ - do_everything_local.ps1
+ - run_checks_output.txt
+
+Run checks output
+-----------------
+```
+Placeholder checks 7 customize to run black, isort, flake8, mypy, eslint, jest, pytest...
+Running minimal placeholder checks: OK
+```
+
+Wrapper check output
+--------------------
+```
+REJECTED: missing UI_SPEC
+```
+
+Notes
+-----
+- These files add machine-readable allowed prompts and human-readable prompt rules under `.antigravity/`.
+- `scripts/apply_prompt_rules.*` write the files into `.antigravity/`.
+- `do_everything_local.*` run apply, run_checks, and perform a git branch/commit/push for convenience.
+- `run_checks.sh` is a placeholder; it reports OK but does not run linters/tests yet. Consider replacing with real checks for your repo.
+
+How to validate locally
+-----------------------
+1. Review `.antigravity/allowed_prompts.json` and `.antigravity/prompt_rules.md`.
+2. Run `./scripts/run_checks.sh` and inspect `run_checks_output.txt`.
+3. Open PR URL printed by GitHub after push (or use the link provided by GitHub in push output).
+# Pull Request: Add Antigravity policy bundle
 
 Summary
 - Thêm toàn bộ bundle policy/CI/wrapper/templates cho "Antigravity" agent.

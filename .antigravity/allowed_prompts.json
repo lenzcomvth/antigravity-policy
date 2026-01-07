@@ -1,5 +1,13 @@
 {
+  "require_signed_prompts": false,
+  "allowed_writable_paths": [
+    "tmp/",
+    "scratch/"
+  ],
   "audit_enabled": true,
+  "deny_shell_exec": true,
+  "deny_file_ops": true,
+  "enforce_git_policy": true,
   "allowed_prompt_patterns": [
     "^/describe",
     "^/summarize",
@@ -7,13 +15,5 @@
     "^/explain",
     "^/readonly-check"
   ],
-  "agent_name": "Antigravity-Strict",
-  "deny_shell_exec": true,
-  "allowed_writable_paths": [
-    "tmp/",
-    "scratch/"
-  ],
-  "enforce_git_policy": true,
-  "deny_file_ops": true,
-  "require_signed_prompts": false
+  "agent_name": "Antigravity-Strict"
 }
